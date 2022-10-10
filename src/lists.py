@@ -71,7 +71,10 @@ def contains(x: List[T], e: T) -> bool:
     >>> contains(L(1, L(2, L(3, None))), 2)
     True
     """
-    ...
+    if x is None:
+        return False
+    return True if e == x.head else contains(x.tail, e)
+
 
 
 def drop(x: List[T], k: int) -> List[T]:
@@ -86,7 +89,8 @@ def drop(x: List[T], k: int) -> List[T]:
     >>> drop(x, 3)
     L(4, None)
     """
-    ...
+    return x if k == 0 else drop(x.tail, k-1)
+
 
 
 def keep(x: List[T], k: int) -> List[T]:
@@ -100,8 +104,9 @@ def keep(x: List[T], k: int) -> List[T]:
     >>> keep(x, 3)
     L(1, L(2, L(3, None)))
     """
-    ...
 
+x = L(1, L(2, L(3, L(4, None))))
+print(keep(x, 4))
 
 def concat(x: List[T], y: List[T]) -> List[T]:
     """
@@ -110,7 +115,9 @@ def concat(x: List[T], y: List[T]) -> List[T]:
     >>> concat(L(1, L(2, None)), L(3, L(4, None)))
     L(1, L(2, L(3, L(4, None))))
     """
-    ...
+    # if x.head < y.head:
+
+# print(concat(L(1, L(2, None)), L(3, L(4, None))))
 
 
 def append(x: List[T], e: T) -> List[T]:
